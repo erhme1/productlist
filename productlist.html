@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductList</title>
+<style>
+    *{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+    }
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    li{
+        margin: 10px 0;
+        font-size: 1.1em;
+        line-height: 1.6;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    li span {
+        display: block;
+        font-size: 12px;
+    }
+  </style>    
+</head>
+<body>
+    <ul id="productList"></ul>
+</body>
+<script>
+    const products = [
+        {name: "Bumbug", price: 50000, category: "Busad", rating: 4.0},
+        {name: "Luuvan", price: 10000, category: "Huns", rating: 4.1},
+        {name: "Pasta Goimon", price: 3000, category: "Huns", rating: 3.5},
+        {name: "Urlen Sumtai Buu", price: 5000, category: "Busad", rating: 5.0},
+        {name: "Soiz", price: 1500, category: "Ariun Tsewer", rating: 5.0},
+        {name: "Biyiin Savan", price: 7000, category: "Ariun Tsever", rating: 4.5},
+        {name: "Deoderant", price: 5000, category: "Ariun Tsever", rating: 3.5},
+        {name: "Hoodie", price: 80000, category: "Goyl", rating: 7.0},
+        {name: "Oroolt", price: 18000, category: "Goyl", rating: 6.0},
+    ];
+
+
+    function renderProductList() {
+        const container = document.getElementById("productList");
+        function renderProduct(product) {
+            const li = document.createElement("li");
+            const span = document.createElement("span");
+            const p = document.createElement("p");
+            const PriceDiv = document.createElement("div");
+            const discountedPrice = product.price * 0.85;
+            PriceDiv.innerHTML = product.name;
+            if (product.rating > 4) {
+                PriceDiv.innerHTML = product.name + "⭐";
+            }
+            p.innerHTML = "First Price" + ":" + product.price + " " + "👉" + "Discounted" + ":" + discountedPrice;
+            li.appendChild(span);
+            li.appendChild(PriceDiv);
+            li.appendChild(p);
+            container.appendChild(li);
+        }
+        products.map(renderProduct);
+    }
+renderProductList();
+</script>
+</html>
